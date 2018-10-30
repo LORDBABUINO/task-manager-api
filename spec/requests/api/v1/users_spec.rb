@@ -5,18 +5,18 @@ RSpec.describe 'Users API', type: :request do
 	let(:user_id) { user.id }
 
 	before do
-		host! "api.task-manager.test"
+		host! 'api.task-manager.test'
 	end
 
 	describe 'GET users/:id' do
 
 		before do
-			headers = { "Accept" => "application/vnd.taskmanager.v1" }
+			headers = { 'Accept' => 'application/vnd.taskmanager.v1' }
 			get "/users/#{user_id}", params: {}, headers: headers
 		end
 
 		context 'when the user exists' do
-			it "returns the user" do
+			it 'returns the user' do
 				user_response = JSON.parse(response.body)
 				expect(user_response['id']).to eq(user_id)
 			end
